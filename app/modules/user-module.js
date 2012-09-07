@@ -1,4 +1,4 @@
-var model = require('../model/user.js'); 
+var model = require('./model/user.js'); 
 
 module.exports = function(app) {    
     app.get('/api/users', model.get);
