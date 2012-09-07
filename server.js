@@ -15,8 +15,8 @@ var Schema = mongoose.Schema;
 mongoose.connect('mongodb://localhost/ecomm_database');
 
 require('./config/initialize.js')(app, express);
-require('./config/api.js')(app);
 require('./config/routes.js')(app);
+require('./modules/user-module.js')(app);
   
 
 app.listen(3000);

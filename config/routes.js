@@ -1,4 +1,3 @@
-var UserModel = require('../model/user.js');
 
 module.exports = function(app) {
     app.get('/', function(req, res) {
@@ -12,16 +11,6 @@ module.exports = function(app) {
     app.get('/signup', function(req, res) {
     	res.render('signup.ejs');
     });
-    
-    app.get('/users', function (req, res){
-  return UserModel.find(function (err, users) {
-    if (!err) {
-      return res.send(users);
-    } else {
-      return console.log(err);
-    }
-  });
-});
     
     app.get('/request-password', function(req, res) {
     	res.render('request-password.ejs');
