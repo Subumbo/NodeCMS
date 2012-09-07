@@ -76,7 +76,7 @@ var app = express.createServer();
 
 // configure Express
 app.configure(function() {
-  app.set('views', __dirname + '/app/views');
+  app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
   app.use(express.logger());
   app.use(express.cookieParser());
@@ -88,7 +88,7 @@ app.configure(function() {
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
+  app.use(express.static(__dirname + '/../../public'));
 });
 
 

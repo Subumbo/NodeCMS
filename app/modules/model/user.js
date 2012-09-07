@@ -8,6 +8,7 @@ var User = new Schema({
 });
 
 
+
 var UserModel = mongoose.model('User', User);
 
 exports.get =  function (req, res){
@@ -69,3 +70,5 @@ exports.delete = function(req, res) {
 			});
 		});
 	}
+	
+exports.model = UserModel;
