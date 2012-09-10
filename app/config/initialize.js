@@ -13,20 +13,20 @@ module.exports = function(app, express) {
 		app.use(express.bodyParser());
 		app.use(express.methodOverride());
 		
-		app.set('db-uri', 'mongodb://localhost/test');
-		
 		
 		var conf = {
-		db : {
-			db : 'auth-test',
-			host : 'localhost',
-			port : 27017, // optional, default: 27017
-			username : 'admin', // optional
-			password : 'secret', // optional
-			collection : 'mySessions' // optional, default: sessions
-		},
-		secret : '076ee61d63aa10a125ea872411e433b9'
+			db : {
+				db : 'auth-test',
+				host : 'localhost',
+				port : 27017, // optional, default: 27017
+				username : 'admin', // optional
+				password : 'secret', // optional
+				collection : 'mySessions' // optional, default: sessions
+			},
+			secret : '076ee61d63aa10a125ea872411e433b9'
 		};
+
+		app.set('db-uri', 'mongodb://localhost/' + conf.db.db);
 		
 		app.use(express.session({
 			secret : conf.secret,
@@ -35,9 +35,7 @@ module.exports = function(app, express) {
 		}));
 
 		db = mongoose.connect(app.set('db-uri'));
-
-		// Initialize Passport!  Also use passport.session() middleware, to support
-		// persistent login sessions (recommended)
+		
 		app.use(app.router);
 	});
 	
